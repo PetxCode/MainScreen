@@ -6,6 +6,7 @@ import { useAllClients } from "../../hooks/useStudio";
 import { deleteUserAPI } from "../../api/studioAPI/studioAPI";
 
 import pix from "../../assets/pix.jpg";
+import { Link } from "react-router-dom";
 
 const ViewUserScreen = () => {
   document.title = "View User Screen";
@@ -68,11 +69,13 @@ const ViewUserScreen = () => {
               </div>
 
               <div className="w-[150px] border-r">
-                <Button
-                  name="view"
-                  className="p-4 w-[85%] bg-blue-950 text-white hover:bg-blue-900 transition-all duration-300"
-                  style={{ background: "var(--gradient)" }}
-                />
+                <Link to={`${props._id}/client-detail`}>
+                  <Button
+                    name="view"
+                    className="p-4 w-[85%] bg-blue-950 text-white hover:bg-blue-900 transition-all duration-300"
+                    style={{ background: "var(--gradient)" }}
+                  />
+                </Link>
               </div>
 
               <div className="w-[180px] border-r">

@@ -5,16 +5,10 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMemberState, changeToggleText } from "../../global/reduxState";
 import { useEffect } from "react";
-import { useUserPayment } from "../../hooks/usePayment";
-import { useUser, useUserID } from "../../hooks/useUserID";
 import logo from "../../assets/logo.png";
 const Sider = () => {
   const dispatch = useDispatch();
   const toggleText = useSelector((state: any) => state.toggleText);
-
-  const { user: userID }: any = useUserID();
-  const { user: data }: any = useUser(userID);
-  const { data: payment } = useUserPayment(userID);
 
   const onHandleClick = () => {
     if (!document.startViewTransition) {
@@ -56,8 +50,7 @@ const Sider = () => {
       <div className="mt-32 px-2 text-center flex flex-col border mx-2 rounded-md py-4">
         <div className="mb-2 text-[18px] font-medium">
           Want to publish an Artticle?
-          <span className="capitalize">{data?.plan}</span>{" "}
-          {payment?.payments?.[0]?.subscriptionPlan}
+          <span className="capitalize">{}</span>{" "}
         </div>
         <div className="flex w-full justify-center">
           {/* <NavLink to="upgrade"> */}
@@ -141,8 +134,8 @@ const Sider = () => {
               : "duration-500 transition-all p-2 rounded-sm  flex items-center justify-between hover:bg-pink-100 hover:text-black cursor-pointer font-medium my-2"
           }
         >
-          Settings
-          <MdSettings />
+          View Articles
+          {/* <MdSettings /> */}
         </NavLink>
       </div>
     </div>

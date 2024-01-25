@@ -1,5 +1,5 @@
 import { MdPeople, MdPlaylistAddCheck } from "react-icons/md";
-import { useUser, useUserID, useViewMember } from "../../hooks/useUserID";
+import { useUser, useViewMember } from "../../hooks/useUserID";
 import Personal from "./Personal";
 import LittleHeader from "../../components/layout/LittleHeader";
 import { FaBuildingUser, FaCheckDouble } from "react-icons/fa6";
@@ -19,26 +19,19 @@ import MostActiveScreen from "./MostActiveStudio";
 const HomeScreen = () => {
   document.title = "Studio Record and Stats";
 
-  const { user: userID }: any = useUserID();
-  const { user: data }: any = useUser(userID);
-  const { myMember }: any = useViewMember(userID);
-
   const [state, setState] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const config = {
     reference: new Date().getTime().toString(),
-    email: data?.email,
-    amount: 2000 * (data?.members?.length + 1) * 12 * 100,
+    email: " data?.email",
+    amount: 2000 * 100,
     publicKey: "pk_test_5a0581a5d3a5e4eff176456546f8e4b3f32d2d01",
   };
 
   const initializePayment: any = usePaystackPayment(config);
 
   const onSuccess = () => {
-    makePaymentAPI(userID).then(() => {
-      setLoading(false);
-    });
     console.log("reference");
   };
 
@@ -59,7 +52,7 @@ const HomeScreen = () => {
       <div className=" grid grid-cols-1 lg:grid-cols-2 gap-3">
         <div className="min-w-[300px] h-full flex flex-col rounded-md border p-4">
           <div className="mb-4 text-medium capitalize">Clients Info</div>
-          <Personal props={userID} />
+          <Personal />
 
           <div className="flex-1 mt-10" />
           <div className="text-[13px] font-medium mt-4">
@@ -155,7 +148,7 @@ const HomeScreen = () => {
 
           <div className=" rounded-md w-full  p-4">
             <div className="mb-4 text-medium capitalize">
-              Top 5 recent Personal Appointment Details
+              Top 5 Most Active studio
             </div>
 
             <div>

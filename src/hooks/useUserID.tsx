@@ -1,4 +1,3 @@
-import { userCookieAPI } from "../api/userAPI";
 import { viewMember, viewMemberDetail } from "../api/memberAPI";
 import useSWR from "swr";
 import { getUserAPI } from "../api/studioAPI/studioAPI";
@@ -10,8 +9,8 @@ export const useUser = (userID: string) => {
       return getUserAPI(userID).then((res) => {
         return res.data;
       });
-    },
-    { refreshInterval: 5000 }
+    }
+    // { refreshInterval: 5000 }
   );
 
   return { user };
@@ -25,16 +24,6 @@ export const useOtherUser = (userID: string) => {
   });
 
   return { otherUser };
-};
-
-export const useUserID = () => {
-  const { data: user } = useSWR(`/reading-user-cookie`, () => {
-    return userCookieAPI().then((res) => {
-      return res.data;
-    });
-  });
-
-  return { user };
 };
 
 export const useViewMember = (userID: string) => {

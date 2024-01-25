@@ -1,13 +1,11 @@
 import moment from "moment";
 import LittleHeader from "../../components/layout/LittleHeader";
 import { useUserHospitalAppointment } from "../../hooks/useHospital";
-import { useUserID } from "../../hooks/useUserID";
 import lodash from "lodash";
 const HistoryScreen = () => {
   document.title = "report and complains Screen";
 
-  const { user } = useUserID();
-  const { data } = useUserHospitalAppointment(user);
+  const { data } = useUserHospitalAppointment("user");
 
   const dataArray = [
     "apple",

@@ -27,8 +27,6 @@ const UserSingleDataActive: FC<iProps> = ({
 
   const { studioNameData } = useSingleStudioBookingName(props?.studioName);
 
-  console.log(studioNameData);
-
   return (
     <div>
       <div>

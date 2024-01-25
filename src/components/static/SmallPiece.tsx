@@ -1,4 +1,3 @@
-import { logoutAPI, updateUserAvatraAPI } from "../../api/userAPI";
 import {
   changeToggle,
   changeToggleMenuToFalse,
@@ -9,7 +8,6 @@ import { MdLogout } from "react-icons/md";
 import { FC, ReactNode, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "../reUse/Button";
-import { useUserID } from "../../hooks/useUserID";
 import { IoMdImages } from "react-icons/io";
 
 interface iData {
@@ -26,7 +24,6 @@ interface iProps {
 }
 
 const SmallPiece: FC<iProps> = ({ log, name, but }) => {
-  const { user: userID } = useUserID();
   const dispatch = useDispatch();
 
   const handleToggleMenuFalse = () => {
@@ -47,12 +44,9 @@ const SmallPiece: FC<iProps> = ({ log, name, but }) => {
     formData.append("avatar", file);
     setState(file);
     console.log(state);
-    console.log(userID);
 
     if (state) {
       const timer = setTimeout(() => {
-        updateUserAvatraAPI(userID, formData);
-
         clearTimeout(timer);
       }, 1000);
     }
@@ -116,7 +110,6 @@ const SmallPiece: FC<iProps> = ({ log, name, but }) => {
           className="text-[12px] font-medium  duration-300 transition-all hover:bg-blue-950 p-2 rounded-md my-1 hover:text-white cursor-pointer flex items-center justify-between"
           onClick={() => {
             dispatch(logoutState());
-            logoutAPI();
 
             dispatch(changeToggle());
           }}

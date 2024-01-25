@@ -2,13 +2,10 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { RiPagesLine } from "react-icons/ri";
 import { HiMiniBuildingOffice2 } from "react-icons/hi2";
-import { useUser, useUserID } from "../../hooks/useUserID";
 import LittleHeader from "../../components/layout/LittleHeader";
 
 const SettingScreen: FC = () => {
   document.title = "Profile settings";
-  const { user: userID }: any = useUserID();
-  const { user: data }: any = useUser(userID);
 
   const pathData = [
     {
@@ -47,9 +44,9 @@ const SettingScreen: FC = () => {
           <div className="text-[13px]">
             `` &middot;
             <strong className="font-[600] mr-1">
-              {data?.firstName} {data?.lastName} &middot;
+              {"data?.firstName"} {"data?.lastName"} &middot;
             </strong>
-            {data?.email} &middot;{" "}
+            {"data?.email"} &middot;{" "}
             <Link
               to="/"
               className="underline text-black font-[400] hover:text-black "
