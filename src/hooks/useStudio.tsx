@@ -5,6 +5,8 @@ import {
   allUserAPI,
   getSingleStudioAPI,
   getSingleStudioByStudioNameAPI,
+  readArticleAPI,
+  readOneArticleAPI,
 } from "../api/studioAPI/studioAPI";
 
 export const useAllClients = () => {
@@ -58,4 +60,24 @@ export const useSingleStudioBookingName = (studioName: string) => {
   );
 
   return { studioNameData };
+};
+
+export const useReadArticle = () => {
+  const { data: article } = useSWR(`/read-article/`, () => {
+    return readArticleAPI().then((res) => {
+      return res.data;
+    });
+  });
+
+  return { article };
+};
+
+export const useReadOneArticle = (articleID: string) => {
+  const { data: articleData } = useSWR(`/one-studio-one/${articleID}`, () => {
+    return readOneArticleAPI(articleID).then((res) => {
+      return res.data;
+    });
+  });
+
+  return { articleData };
 };

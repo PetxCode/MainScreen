@@ -7,6 +7,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { FaRegImages } from "react-icons/fa6";
+import { createArticleAPI } from "../../api/studioAPI/studioAPI";
+import DOMPurify from "dompurify";
 
 const AddMember = () => {
   document.title = "Create Article";
@@ -62,29 +64,45 @@ const AddMember = () => {
   };
 
   const onHandleSubmission = () => {
-    // e.perventDefault();
-
     if (articleTitle !== "" && articleDescription !== "" && imageFile !== "") {
       if (!document.startViewTransition) {
-        dispatch(changeToggleText(true));
+        console.log("cliked: ");
+
         const formData = new FormData();
         formData.append("articleTitle", articleTitle);
         formData.append("articleDescription", articleDescription);
         formData.append("articleContent", articleContent);
         formData.append("articleImage", imageFile);
+
+        createArticleAPI(formData).then((res) => {
+          console.log(res);
+          onHandleClick();
+          setLoading(true);
+        });
+
+        dispatch(changeToggleText(true));
       } else {
+        console.log("cliked: ");
         document.startViewTransition(() => {
+          const formData = new FormData();
+          formData.append("articleTitle", articleTitle);
+          formData.append("articleDescription", articleDescription);
+          formData.append("articleContent", articleContent);
+          formData.append("articleImage", imageFile);
+
+          createArticleAPI(formData).then((res) => {
+            console.log(res);
+            onHandleClick();
+            setLoading(true);
+          });
           dispatch(changeToggleText(true));
         });
       }
-
-      onHandleClick();
-      setLoading(true);
     }
   };
 
   return (
-    <div className="flex flex-col w-full h-full items-center justify-center ">
+    <div className="flex flex-col w-full items-center mt-20 ">
       <div className="rounded-md bg-white min-h-[300px]  md:w-[80%] lg:w-[60%] border p-4">
         <div className="grid grid-cols-7 gap-8 mb-2">
           <div className="col-span-2 border h-[200px] rounded-md flex justify-center items-center">
@@ -130,7 +148,7 @@ const AddMember = () => {
               //   errorText="Password has to be passed"
               errorText={
                 articleDescription &&
-                "Member has to be either Child, Husband or Wife"
+                "Adding a description that brifely describe this Article..."
               }
               required
               value={articleDescription}

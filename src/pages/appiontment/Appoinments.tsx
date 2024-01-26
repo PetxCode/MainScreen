@@ -1,11 +1,10 @@
 import LittleHeader from "../../components/layout/LittleHeader";
 import moment from "moment";
-import { useUser, useUserID } from "../../hooks/useUserID";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../../components/reUse/Button";
 import { useNavigate } from "react-router-dom";
-import { useAllClients, useAllStudioBookings } from "../../hooks/useStudio";
+import { useAllStudioBookings } from "../../hooks/useStudio";
 
 import UserSingleData from "../UserSingleData";
 import SingleStudioData from "../SingleStudioData";

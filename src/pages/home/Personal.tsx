@@ -25,6 +25,13 @@ const Personal: FC = () => {
 
   let values: any = Object.values(sumByMonth);
 
+  let studioCreated = _.groupBy(studio, (item) =>
+    new Date(item?.createdAt).getMonth()
+  );
+  let clientsCreated = _.groupBy(data, (item) =>
+    new Date(item?.createdAt).getMonth()
+  );
+
   return (
     <div>
       {/* data bar */}
@@ -56,7 +63,7 @@ const Personal: FC = () => {
           </div>
           <div className="border rounded-md min-h-[100px] p-4">
             <p className="font-bold">
-              Studios Booked for Last Month (
+              Studios Booked for this Month (
               {moment(Date.now()).format("LLL").split(" ")[0]}) :
             </p>
 
@@ -70,24 +77,96 @@ const Personal: FC = () => {
           </div>
           <div className="border rounded-md min-h-[100px] p-4">
             <p className="font-bold">
-              Total Revenue for Last Month (
+              Total Revenue for this Month (
               {moment(Date.now()).format("LLL").split(" ")[0]}) :
             </p>
 
             <h1
-              className="text-[25px] mt-5  font-bold"
+              className="text-[25px] mt-5  font-bold break-words leading-tight"
               style={{ color: "var(--primary)" }}
             >
-              ₦{values[0].toLocaleString()}
+              ₦{values[0]?.toLocaleString()}
             </h1>
           </div>
 
           <div className="border rounded-md min-h-[100px] p-4 col-span-2">
-            <p className="font-bold ">Total Studio Complains:</p>
+            <p className="font-bold mb-3">Last Month's Platform Report:</p>
 
-            <h1 className="text-[40px] font-medium">
-              {null ? (
-                <div>show data</div>
+            <h1 className="text-[12px] font-medium">
+              {!null ? (
+                <div className="flex flex-wrap justify-center gap-[0.30rem]">
+                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                    <p>
+                      Last Month (
+                      {
+                        moment(new Date().setMonth(-1))
+                          .format("LL")
+                          .split(" ")[0]
+                      }
+                      )
+                    </p>
+                    <p className="font-medium mt-2 text-[14px] ">
+                      {costMonth[11]?.length}
+                    </p>
+                    <p className="leading-tight mt-2 text-center">
+                      Total Studio Booked
+                    </p>
+                  </div>
+
+                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                    <p>
+                      Last Month (
+                      {
+                        moment(new Date().setMonth(-1))
+                          .format("LL")
+                          .split(" ")[0]
+                      }
+                      )
+                    </p>
+                    <p className="font-medium mt-2 text-[14px] ">
+                      ₦{values[1]?.toLocaleString()}
+                    </p>
+                    <p className="leading-tight mt-2 text-center">
+                      Total Studio Revenue
+                    </p>
+                  </div>
+
+                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                    <p>
+                      Last Month (
+                      {
+                        moment(new Date().setMonth(-1))
+                          .format("LL")
+                          .split(" ")[0]
+                      }
+                      )
+                    </p>
+                    <p className="font-medium mt-2 text-[14px] ">
+                      {Object.values(clientsCreated)[0]?.length}
+                    </p>
+                    <p className="leading-tight mt-2 text-center">
+                      Total Client Registered
+                    </p>
+                  </div>
+
+                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                    <p>
+                      Last Month (
+                      {
+                        moment(new Date().setMonth(-1))
+                          .format("LL")
+                          .split(" ")[0]
+                      }
+                      )
+                    </p>
+                    <p className="font-medium mt-2 text-[14px] ">
+                      {Object.values(studioCreated)[2]?.length}
+                    </p>
+                    <p className="leading-tight mt-2 text-center">
+                      Total Studio Created
+                    </p>
+                  </div>
+                </div>
               ) : (
                 <div className="flex flex-col items-center justify-center p-4">
                   <FaCheckDouble size={20} />

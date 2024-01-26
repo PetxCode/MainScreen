@@ -28,7 +28,7 @@ const Layout = () => {
             {memberState && (
               //   <div className="relative  ">
               <div
-                className="-top-0 w-full h-full left-0 absolute rounded-md "
+                className="top-0 w-full h-[100%] left-0 absolute rounded-md "
                 style={{
                   background: "rgba(142, 6, 42, 0.2)",
                   boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
