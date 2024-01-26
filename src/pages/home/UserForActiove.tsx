@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useUser } from "../../hooks/useUserID";
 import { useSingleStudioBookingName } from "../../hooks/useStudio";
 import SingleStudioName from "../SingleStudioName";

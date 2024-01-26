@@ -1,11 +1,11 @@
 import { FaArrowDown, FaBarsProgress } from "react-icons/fa6";
-import pic from "../../assets/pix.jpg";
+import pic from "../../assets/Kola-2b.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { changeToggle, changeToggleMenu } from "../../global/reduxState";
 import SmallPiece from "./SmallPiece";
 import {
-  MdAccountCircle,
   MdClose,
+  MdLibraryBooks,
   MdMenu,
   MdPeople,
   MdQueryStats,
@@ -68,17 +68,17 @@ const Header = () => {
           toggle ? "right-6 top-14  " : "right-6 -top-36  "
         }`}
       >
-        <SmallPiece
+        {/* <SmallPiece
           name={[
             { title: "Account", icon: <MdAccountCircle />, to: "settings" },
           ]}
           log
-        />
+        /> */}
       </div>
 
       {toggleMenu && (
         <div
-          className={`absolute duration-300 transition-all ${
+          className={` md:hidden absolute duration-300 transition-all ${
             toggleMenu ? "right-6 top-14  " : "right-6 -top-24  "
           }`}
         >
@@ -90,19 +90,24 @@ const Header = () => {
                 to: "/",
               },
               {
-                title: "Teams",
+                title: "View Clients",
                 icon: <MdPeople />,
-                to: "teams",
+                to: "view-clients",
               },
               {
-                title: "Projects",
+                title: "View Booked Studios",
                 icon: <FaBarsProgress />,
-                to: "projects",
+                to: "booked-studios",
               },
               {
-                title: "Report",
+                title: "View Booked Cases",
                 icon: <MdReport />,
-                to: "report",
+                to: "report-complains",
+              },
+              {
+                title: "View Articles",
+                icon: <MdLibraryBooks />,
+                to: "articles",
               },
             ]}
             but

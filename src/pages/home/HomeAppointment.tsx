@@ -1,10 +1,7 @@
 import moment from "moment";
-import { useUserID } from "../../hooks/useUserID";
-import { useUserHospitalAppointment } from "../../hooks/useHospital";
 
 const HomeAppointment = () => {
-  const { user } = useUserID();
-  const { data } = useUserHospitalAppointment(user);
+  const data = Array.from({ length: 2 });
 
   return (
     <div className="py-6 px-2 border rounded-md w-[100%] overflow-y-hidden ">
@@ -20,7 +17,7 @@ const HomeAppointment = () => {
         <div className="w-[300px] border-r">Reasons</div>
       </div>
       <div className="w-full">
-        {data?.appointments?.map((props: any, i: number) => (
+        {data?.map((props: any, i: number) => (
           <div>
             {i < 5 && (
               <div

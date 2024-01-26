@@ -2,15 +2,10 @@ import { useEffect, useState } from "react";
 import Button from "../../components/reUse/Button";
 import Input from "../../components/reUse/Input";
 import { FaGoogle } from "react-icons/fa6";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { loginAPI, verifyAPI } from "../../api/userAPI";
-import { useDispatch } from "react-redux";
-import { loginState } from "../../global/reduxState";
+import { Link, useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const SignIn = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [state, setState] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -19,23 +14,12 @@ const SignIn = () => {
   const handleSubmit = () => {
     // e.preventDefault();
     setLoading(true);
-    const val = { email: state, token: password };
-    loginAPI(val)
-      .then((res) => {
-        dispatch(loginState(res.data));
-        setLoading(false);
-        console.log(res);
-      })
-      .then(() => {
-        navigate("/");
-      });
   };
 
   const { userID } = useParams();
 
   useEffect(() => {
     if (userID) {
-      verifyAPI(userID);
     }
   });
 

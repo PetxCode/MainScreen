@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { useUser, useUserID } from "../../hooks/useUserID";
 import Button from "../../components/reUse/Button";
 import { MdSave } from "react-icons/md";
 import Input from "../../components/reUse/Input";
 
 const ProfressionInfoScreen = () => {
-  const { user: userID }: any = useUserID();
-  const { user: data }: any = useUser(userID);
-
   const [toggle, setToggle] = useState<boolean>(false);
   const [toggle1, setToggle1] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
@@ -85,9 +81,7 @@ const ProfressionInfoScreen = () => {
           {" "}
           <div>
             <div>Phone Number</div>
-            <div className="font-[400]">
-              {data?.profession ? data.profession : "no Phone Number added yet"}
-            </div>
+            <div className="font-[400]">{"no Phone Number added yet"}</div>
           </div>
           <div
             className="text-[12px] underline font-[500] hover:cursor-pointer  ml-10"
@@ -130,9 +124,7 @@ const ProfressionInfoScreen = () => {
           {" "}
           <div>
             <div>Home Address</div>
-            <div className="font-[400]">
-              {data?.address ? data.address : "no home address yet"}
-            </div>
+            <div className="font-[400]">{"no home address yet"}</div>
           </div>
           <div
             className="text-[12px] underline font-[500] hover:cursor-pointer  ml-10"
@@ -174,9 +166,7 @@ const ProfressionInfoScreen = () => {
           {" "}
           <div>
             <div>Frequently spoken language</div>
-            <div className="font-[400]">
-              {data?.language ? data.language : "no language added yet"}
-            </div>
+            <div className="font-[400]">{"no language added yet"}</div>
           </div>
           <div
             className="text-[12px] underline font-[500] hover:cursor-pointer  ml-10"
@@ -218,9 +208,7 @@ const ProfressionInfoScreen = () => {
           {" "}
           <div>
             <div>Biography</div>
-            <div className="font-[400]">
-              {data?.bio ? data.bio : "no biography added yet"}
-            </div>
+            <div className="font-[400]">{"no biography added yet"}</div>
           </div>
           <div
             className="text-[12px] underline font-[500] hover:cursor-pointer  ml-10"

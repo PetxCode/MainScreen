@@ -1,4 +1,5 @@
 import {
+  changeMemberState,
   changeToggle,
   changeToggleMenuToFalse,
   logoutState,
@@ -29,12 +30,27 @@ const SmallPiece: FC<iProps> = ({ log, name, but }) => {
   const handleToggleMenuFalse = () => {
     if (!document.startViewTransition) {
       dispatch(changeToggleMenuToFalse());
+      dispatch(changeToggleMenuToFalse());
     } else {
       document.startViewTransition(() => {
+        dispatch(changeToggleMenuToFalse());
+        dispatch(changeMemberState());
+      });
+    }
+  };
+
+  const onHandleClick = () => {
+    if (!document.startViewTransition) {
+      dispatch(changeMemberState());
+      dispatch(changeToggleMenuToFalse());
+    } else {
+      document.startViewTransition(() => {
+        dispatch(changeMemberState());
         dispatch(changeToggleMenuToFalse());
       });
     }
   };
+
   const [state, setState] = useState<string>("");
 
   const changeImage = (e: any) => {
@@ -55,7 +71,7 @@ const SmallPiece: FC<iProps> = ({ log, name, but }) => {
   };
 
   return (
-    <div className="border w-[150px] bg-blue-50 shadow-sm min-h-10 rounded-md p-1 ">
+    <div className="border w-[250px] bg-pink-50 shadow-md min-h-10 rounded-md p-1 ">
       <div className="flex flex-col items-between w-full">
         {name?.map(({ title, icon, to }, i: number) => (
           <NavLink
@@ -65,7 +81,7 @@ const SmallPiece: FC<iProps> = ({ log, name, but }) => {
           "
             onClick={handleToggleMenuFalse}
           >
-            <div className="text-[12px] w-full font-medium  duration-300 transition-all hover:bg-blue-950 p-2 rounded-md my-1 hover:text-white cursor-pointer flex items-center justify-between">
+            <div className="text-[12px] w-full font-medium  duration-300 transition-all hover:bg-[#870631] p-2 py-4 rounded-md my-1 hover:text-white cursor-pointer flex items-center justify-between">
               <div>{title}</div>
               <div className="text-[17px]">{icon}</div>
             </div>
@@ -75,12 +91,12 @@ const SmallPiece: FC<iProps> = ({ log, name, but }) => {
 
       {but && (
         <div className="w-full flex justify-center mt-3">
-          <NavLink to="/upgrade" onClick={handleToggleMenuFalse}>
-            <Button
-              name="upgrade"
-              className="text-[12px] uppercase font-bold bg-blue-950 text-white rounded-[3px]"
-            />
-          </NavLink>
+          <Button
+            onClick={onHandleClick}
+            name="Publish an Article"
+            className="text-[12px] py-4 uppercase font-bold bg-blue-950 text-white rounded-md"
+            style={{ background: "var(--gradient)" }}
+          />
         </div>
       )}
 

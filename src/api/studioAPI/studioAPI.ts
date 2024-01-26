@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const URL: string = "http://localhost:3300/api/v1";
-const URL: string = "http://localhost:3300/api/v1";
+const URL: string = "https://pick-be.onrender.com/api/v1";
 
 export const allUserAPI = async () => {
   try {
@@ -147,6 +147,21 @@ export const readOneArticleAPI = async (articleID: string) => {
       .get(`${URL}/read-one-article/${articleID}`)
       .then((res: any) => {
         return res.data;
+      })
+      .catch((err: any) => {
+        return err;
+      });
+  } catch (error) {
+    return error;
+  }
+};
+
+export const justRead = async () => {
+  try {
+    return axios
+      .get(`https://pick-be.onrender.com`)
+      .then((res: any) => {
+        return res;
       })
       .catch((err: any) => {
         return err;

@@ -1,10 +1,5 @@
-import moment from "moment";
-import pix from "../../assets/pix.jpg";
-import Button from "../../components/reUse/Button";
-import { deleteUserAPI } from "../../api/studioAPI/studioAPI";
-import { useAllClients, useAllStudios } from "../../hooks/useStudio";
-import SingleStudioData from "../SingleStudioData";
-import UserSingleData from "../UserSingleData";
+import { useAllStudios } from "../../hooks/useStudio";
+
 import UserSingleDataActive from "./UserForActiove";
 import _ from "lodash";
 

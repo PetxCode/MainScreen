@@ -1,15 +1,12 @@
 import { MdSave } from "react-icons/md";
 import { FaBuildingUser, FaCheckDouble } from "react-icons/fa6";
 import Button from "../../components/reUse/Button";
-import { useUserID } from "../../hooks/useUserID";
 import { useState } from "react";
 import { useAllHospital } from "../../hooks/useHospital";
 import HospitalDetails from "./HospitalDetails";
-import { createUserHospitalsAPI } from "../../api/hospitalAPI";
 
 const HospitalChice = () => {
   const { data: hospital } = useAllHospital();
-  const { user: userID }: any = useUserID();
 
   const [state, setState] = useState<string>("");
   const [state1, setState1] = useState<string>("");
@@ -90,15 +87,7 @@ const HospitalChice = () => {
             icon={<MdSave />}
             className="bg-blue-950 text-white uppercase font-medium text-[12px],
             "
-            onClick={() => {
-              createUserHospitalsAPI(userID, {
-                choice1: state,
-                choice2: state1,
-                choice3: state2,
-              }).then(() => {
-                console.log("done");
-              });
-            }}
+            onClick={() => {}}
           />
         </div>
 

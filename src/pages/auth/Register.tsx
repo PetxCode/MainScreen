@@ -2,12 +2,10 @@ import { useState } from "react";
 import Button from "../../components/reUse/Button";
 import Input from "../../components/reUse/Input";
 import { FaGoogle } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
-import { registerAPI } from "../../api/userAPI";
+import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const Register = () => {
-  const navigate = useNavigate();
   const [state, setState] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -15,13 +13,6 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     if (state !== "") {
-      registerAPI({ email: state })
-        .then(() => {
-          setLoading(false);
-        })
-        .then(() => {
-          navigate("/register-info");
-        });
     }
   };
 

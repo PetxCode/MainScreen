@@ -1,7 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import pix from "../../../assets/logo.png";
 import { useSingleStudioBookings } from "../../../hooks/useStudio";
-import SingleStudioName from "../../SingleStudioName";
 
 interface iProp {
   props?: any;
@@ -11,14 +10,7 @@ interface iProp {
   cost?: boolean;
   date?: boolean;
 }
-const GetSingleStudioData: FC<iProp> = ({
-  props,
-  studioName,
-  name,
-  image,
-  cost,
-  date,
-}) => {
+const GetSingleStudioData: FC<iProp> = ({ props }) => {
   const { studio } = useSingleStudioBookings(props);
   console.log(props);
   console.log(studio);

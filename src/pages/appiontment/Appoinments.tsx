@@ -2,15 +2,12 @@ import LittleHeader from "../../components/layout/LittleHeader";
 import moment from "moment";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-datepicker/dist/react-datepicker.css";
-import Button from "../../components/reUse/Button";
-import { useNavigate } from "react-router-dom";
 import { useAllStudioBookings } from "../../hooks/useStudio";
 
 import UserSingleData from "../UserSingleData";
 import SingleStudioData from "../SingleStudioData";
 
 const Appoinments = () => {
-  const navigate = useNavigate();
   document.title = "Studio Booked Screen";
 
   const { data } = useAllStudioBookings();

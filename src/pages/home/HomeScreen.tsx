@@ -1,46 +1,26 @@
-import { MdPeople, MdPlaylistAddCheck } from "react-icons/md";
-import { useUser, useViewMember } from "../../hooks/useUserID";
+import { MdPlaylistAddCheck } from "react-icons/md";
+
 import Personal from "./Personal";
 import LittleHeader from "../../components/layout/LittleHeader";
 import { FaBuildingUser, FaCheckDouble } from "react-icons/fa6";
-import HospitalDetails from "../settings/HospitalDetails";
-import pix from "../../assets/pix.jpg";
-import Button from "../../components/reUse/Button";
-import { useUserPayment } from "../../hooks/usePayment";
-import { useState } from "react";
-import { usePaystackPayment } from "react-paystack";
-import { makePaymentAPI } from "../../api/paymentAPI";
-import Clipboard from "react-spinners/ClipLoader";
-import HomeAppointment from "./HomeAppointment";
+
+import { useEffect, useState } from "react";
+
 import ComplainScreen from "./ComplainScreen";
 import MostComplainScreen from "./MostComplainStudio";
 import MostActiveScreen from "./MostActiveStudio";
+import { justRead } from "../../api/studioAPI/studioAPI";
 
 const HomeScreen = () => {
   document.title = "Studio Record and Stats";
 
   const [state, setState] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const config = {
-    reference: new Date().getTime().toString(),
-    email: " data?.email",
-    amount: 2000 * 100,
-    publicKey: "pk_test_5a0581a5d3a5e4eff176456546f8e4b3f32d2d01",
-  };
-
-  const initializePayment: any = usePaystackPayment(config);
-
-  const onSuccess = () => {
-    console.log("reference");
-  };
-
-  const onClose = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
-  };
 
   const readData = Array.from({ length: 2 });
+
+  useEffect(() => {
+    justRead();
+  }, []);
 
   return (
     <div

@@ -94,8 +94,8 @@ const Personal: FC = () => {
 
             <h1 className="text-[12px] font-medium">
               {!null ? (
-                <div className="flex flex-wrap justify-center gap-[0.30rem]">
-                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                <div className=" grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-2 xl:grid-cols-4 justify-center gap-[0.30rem]">
+                  <div className="border min-w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
                     <p>
                       Last Month (
                       {
@@ -113,7 +113,7 @@ const Personal: FC = () => {
                     </p>
                   </div>
 
-                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                  <div className="border min-w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
                     <p>
                       Last Month (
                       {
@@ -131,7 +131,7 @@ const Personal: FC = () => {
                     </p>
                   </div>
 
-                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                  <div className="border min-w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
                     <p>
                       Last Month (
                       {
@@ -149,7 +149,7 @@ const Personal: FC = () => {
                     </p>
                   </div>
 
-                  <div className="border w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
+                  <div className="border min-w-[100px]  min-h-[100px] rounded-md p-2 break-words flex flex-col items-center justify-center ">
                     <p>
                       Last Month (
                       {

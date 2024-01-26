@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useUser } from "../hooks/useUserID";
 
 interface iProps {

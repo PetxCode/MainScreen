@@ -1,15 +1,10 @@
 import { useState } from "react";
 import Input from "../../components/reUse/Input";
 import Button from "../../components/reUse/Button";
-import { useUser, useUserID } from "../../hooks/useUserID";
 import { MdSave } from "react-icons/md";
-import { getUserNameAPI, getUserPhoneAPI } from "../../api/userAPI";
 import BeatLoader from "react-spinners/ClipLoader";
 
 const PersonalInfoScreen = () => {
-  const { user: userID }: any = useUserID();
-  const { user: data }: any = useUser(userID);
-
   const [loading, setLoading] = useState<boolean>(false);
 
   const [toggle, setToggle] = useState<boolean>(false);
@@ -58,10 +53,7 @@ const PersonalInfoScreen = () => {
           {" "}
           <div>
             <div>Legal Name</div>
-            <div>
-              {data?.firstName ? data?.firstName : "No First Name yet"}{" "}
-              {data?.lastName ? data?.lastName : "No Last Name yet"}
-            </div>
+            <div></div>
           </div>
           <div
             className="text-[12px] underline font-[500] hover:cursor-pointer  ml-10"
@@ -116,11 +108,6 @@ const PersonalInfoScreen = () => {
                   }`}
                   onClick={() => {
                     setLoading(true);
-
-                    getUserNameAPI(userID, { firstName, lastName }).then(() => {
-                      onToggle();
-                      setLoading(false);
-                    });
                   }}
                 />
               </div>
@@ -139,14 +126,7 @@ const PersonalInfoScreen = () => {
               Use an address you’ll always have access to.
             </div>
             <div className="font-[400] mt-3">
-              {toggle1 ? (
-                <div>{data?.email}</div>
-              ) : (
-                <div>
-                  {data?.email.substring(0, 2)}****@
-                  {data?.email.split("@")[1]}
-                </div>
-              )}
+              {toggle1 ? <div></div> : <div></div>}
             </div>
           </div>
           <div
@@ -165,22 +145,15 @@ const PersonalInfoScreen = () => {
           <div>
             <div>Phone numbers</div>
             <div className="text-[12px] leading-4 text-[gray] mb-4 mr-8 ">
-              Add a your contact phone Number: {data?.phoneNumber}
+              Add a your contact phone Number:
             </div>
             <div>
               <div className="font-[400] mt-3">
                 {toggle2 ? (
-                  <div>{data?.phoneNumber}</div>
+                  <div></div>
                 ) : (
                   <div>
-                    {data?.phone ? (
-                      <div>
-                        {data?.phone.substring(0, 2)}****@
-                        {data?.phone.split("@")[1]}
-                      </div>
-                    ) : (
-                      <div>No phone contact yet</div>
-                    )}
+                    <div>No phone contact yet</div>
                   </div>
                 )}
               </div>
@@ -232,11 +205,6 @@ const PersonalInfoScreen = () => {
                   }`}
                   onClick={() => {
                     setLoading(true);
-
-                    getUserPhoneAPI(userID, phone).then(() => {
-                      onToggle2();
-                      setLoading(false);
-                    });
                   }}
                 />
               </div>

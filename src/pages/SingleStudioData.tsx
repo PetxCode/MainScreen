@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { useSingleStudioBookings } from "../hooks/useStudio";
 import pix from "../assets/logo.png";
 import SingleStudioName from "./SingleStudioName";

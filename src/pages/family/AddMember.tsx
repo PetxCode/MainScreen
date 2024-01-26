@@ -8,7 +8,6 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { FaRegImages } from "react-icons/fa6";
 import { createArticleAPI } from "../../api/studioAPI/studioAPI";
-import DOMPurify from "dompurify";
 
 const AddMember = () => {
   document.title = "Create Article";

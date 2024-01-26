@@ -1,4 +1,9 @@
-import { MdPeople, MdQueryStats, MdReport, MdSettings } from "react-icons/md";
+import {
+  MdLibraryBooks,
+  MdPeople,
+  MdQueryStats,
+  MdReport,
+} from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import Button from "../reUse/Button";
 import { FaBarsProgress } from "react-icons/fa6";
@@ -127,7 +132,7 @@ const Sider = () => {
         <div className="flex-1" />
 
         <NavLink
-          to="/settings"
+          to="/articles"
           className={({ isActive }) =>
             isActive
               ? "duration-500 transition-all p-2 rounded-sm bg-pink-100 text-black cursor-pointer font-medium my-2 flex items-center justify-between "
@@ -135,7 +140,7 @@ const Sider = () => {
           }
         >
           View Articles
-          {/* <MdSettings /> */}
+          <MdLibraryBooks />
         </NavLink>
       </div>
     </div>
